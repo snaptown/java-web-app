@@ -1,0 +1,6 @@
+.settings
+.classpath
+.project
+build
+WebContent/lib
+WebContent/css/.sass-cache
