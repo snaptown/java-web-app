@@ -29,11 +29,14 @@ public class Photo implements Serializable {
 	private double longitude;
 	private double latitude;
 	private String comment;
+	private String imgPath;
 	private boolean isFixed;
 
-	public Photo(final User creator, final double longitude, final double latitude, final String comment) {
+	public Photo(final User creator, final String imgPath, final double longitude, final double latitude,
+			final String comment) {
 		super();
 		this.creator = creator;
+		this.imgPath = imgPath;
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.comment = comment;
@@ -46,6 +49,14 @@ public class Photo implements Serializable {
 
 	public void setCreator(User creator) {
 		this.creator = creator;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
 	public double getLongitude() {
@@ -92,6 +103,8 @@ public class Photo implements Serializable {
 			if (creatorName != null && !creatorName.trim().isEmpty())
 				result.append(" creator: ").append(creatorName);
 		}
+		if (imgPath != null && !imgPath.trim().isEmpty())
+			result.append(", image-path: ").append(imgPath);
 		result.append(", longitude: ").append(longitude);
 		result.append(", latitude: ").append(latitude);
 		if (comment != null && !comment.trim().isEmpty())
