@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>3 Col Portfolio - Start Bootstrap Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/dist/css/bootstrap-theme2.css" rel="stylesheet">
+    <link href="lib/style/style.css" rel="stylesheet">
+    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/js/script.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                </button>
+                <a class="navbar-brand" href="#">Snaptown</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" id="register">Register</a></li>
+                <li><a href="#" id="login">Lorign</a></li>
+            </ul>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+
+
+        <div class="container" id="loginform">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-login">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="#" id="register-form-link">Register</a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                            <label for="remember"> Remember Me</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="text-center">
+                                                        <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>setEvents();</script>
+
+
+    <div class="container">
+  
+                <h1 class="page-header" style="margin-top: 75px;">Page Heading </h1>
+                                  
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <div  class="img-conteiner">
+                        <img class="img-responsive" src="lib/img/1.jpg" alt="">
+                    </div>
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <a href="#" class="vote positive-vote">
+                    <i></i>
+                    <span>122</span>
+                </a>
+                <a href="#" class="vote negative-vote">
+                    <i></i>
+                    <span>332</span>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <div  class="img-conteiner">
+                        <img class="img-responsive" src="lib/img/2.jpg" alt="">
+                    </div>
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <a href="#" class="vote positive-vote">
+                    <i></i>
+                    <span>122</span>
+                </a>
+                <a href="#" class="vote negative-vote">
+                    <i></i>
+                    <span>332</span>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <div  class="img-conteiner">
+                        <img class="img-responsive" src="lib/img/3.jpg" alt="">
+                    </div>
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <a href="#" class="vote positive-vote">
+                    <i></i>
+                    <span>122</span>
+                </a>
+                <a href="#" class="vote negative-vote">
+                    <i></i>
+                    <span>332</span>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, nemo. Numquam, at. Facilis officiis quidem culpa et vel error magnam eaque architecto quasi fuga consectetur distinctio quos officia sunt tempora impedit, explicabo quis inventore quod aperiam. Similique impedit, libero ducimus fugit culpa. Amet sapiente laborum earum fuga corrupti quia reiciendis culpa nobis, neque, fugiat expedita dolor dolore qui porro tempora consequuntur? Cum dolores, nihil qui aliquid voluptates accusamus minus error sunt earum, totam blanditiis exercitationem ex quod laboriosam veniam repellendus non necessitatibus tempore doloremque suscipit. Architecto nobis porro accusamus veniam tempora aspernatur! Pariatur consequatur ullam natus voluptas laudantium nam blanditiis qui ad quia cumque aut, id porro fugiat, totam soluta delectus earum, itaque, neque tempore beatae. Voluptate consequatur quos veniam magnam quaerat incidunt quidem sint rem quam dolorem culpa non, maiores illum nemo officiis facere aut quisquam ipsa eum obcaecati tempore! Doloremque eius, velit pariatur veniam neque cumque dolorem natus eaque, earum aspernatur tempore.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+        </div>
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="#">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+
+
+
+
+
+
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+    </div>
+    <!-- /.container -->
+
+
+
+
+
+    
+</div>
+</body>
+</html>
