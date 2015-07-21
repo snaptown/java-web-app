@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity(name = "users")
-@NamedQueries({})
+@NamedQueries({
+		@NamedQuery(name = "findUserByCredentials", query = "SELECT new org.snaptown.models.User(u.username, u.password, u.isAdmin)"
+				+ " FROM users u WHERE u.username=:username AND u.password=:password") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 

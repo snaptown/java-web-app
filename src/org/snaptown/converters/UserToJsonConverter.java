@@ -1,4 +1,4 @@
-package com.snaptown.converters;
+package org.snaptown.converters;
 
 import java.util.List;
 
