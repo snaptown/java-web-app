@@ -1,36 +1,37 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
-    <title>3 Col Portfolio - Start Bootstrap Template</title>
+    <title>Snaptown</title>
     <!-- Bootstrap Core CSS -->
-    <link href="lib/bootstrap/dist/css/bootstrap-theme2.css" rel="stylesheet">
+    <link href="lib/bootstrap/dist/css/bootstrap-theme4.css" rel="stylesheet">
     <link href="style/style.css" rel="stylesheet">
     <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
+
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 </button>
-                <a class="navbar-brand" href="#">Snaptown</a>
+                <a href="index.html">
+                    <img src="img/log.png" id="logo-img" />
+                </a>
             </div>
-
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" id="register">Register</a></li>
                 <li><a href="#" id="login">Lorign</a></li>
             </ul>
-
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     <!-- Page Content -->
-
-
     <div class="container" id="loginform">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -105,18 +106,17 @@
             </div>
         </div>
     </div>
-    <script>setEvents();</script>
-
-
+    <script>
+    setEvents();
+    </script>
     <div class="container">
-      
         <h1 class="page-header" style="margin-top: 75px;">Page Heading </h1>
-        
+
         <!-- Projects Row -->
         <div class="row">
             <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div  class="img-conteiner">
+                <a href="page.html">
+                    <div class="img-conteiner">
                         <img class="img-responsive" src="img/1.jpg" alt="">
                     </div>
                 </a>
@@ -134,8 +134,8 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
             <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div  class="img-conteiner">
+                <a href="page.html">
+                    <div class="img-conteiner">
                         <img class="img-responsive" src="img/2.jpg" alt="">
                     </div>
                 </a>
@@ -153,27 +153,28 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
             <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div  class="img-conteiner">
+                <a href="page.html">
+                    <div class="img-conteiner">
                         <img class="img-responsive" src="img/3.jpg" alt="">
                     </div>
                 </a>
                 <h3>
                     <a href="#">Project Name</a>
                 </h3>
-                <a href="#" class="vote positive-vote">
-                    <i></i>
-                    <span>122</span>
-                </a>
-                <a href="#" class="vote negative-vote">
-                    <i></i>
-                    <span>332</span>
-                </a>
+                <div>
+                    <a href="#" class="vote positive-vote">
+                        <i></i>
+                        <span>122</span>
+                    </a>
+                    <a href="#" class="vote negative-vote">
+                        <i></i>
+                        <span>332</span>
+                    </a>
+                </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, nemo. Numquam, at. Facilis officiis quidem culpa et vel error magnam eaque architecto quasi fuga consectetur distinctio quos officia sunt tempora impedit, explicabo quis inventore quod aperiam. Similique impedit, libero ducimus fugit culpa. Amet sapiente laborum earum fuga corrupti quia reiciendis culpa nobis, neque, fugiat expedita dolor dolore qui porro tempora consequuntur? Cum dolores, nihil qui aliquid voluptates accusamus minus error sunt earum, totam blanditiis exercitationem ex quod laboriosam veniam repellendus non necessitatibus tempore doloremque suscipit. Architecto nobis porro accusamus veniam tempora aspernatur! Pariatur consequatur ullam natus voluptas laudantium nam blanditiis qui ad quia cumque aut, id porro fugiat, totam soluta delectus earum, itaque, neque tempore beatae. Voluptate consequatur quos veniam magnam quaerat incidunt quidem sint rem quam dolorem culpa non, maiores illum nemo officiis facere aut quisquam ipsa eum obcaecati tempore! Doloremque eius, velit pariatur veniam neque cumque dolorem natus eaque, earum aspernatur tempore.</p>
             </div>
         </div>
         <!-- /.row -->
-
         <!-- Projects Row -->
         <div class="row">
             <div class="col-md-4 portfolio-item">
@@ -204,7 +205,6 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
         </div>
-
         <!-- Projects Row -->
         <div class="row">
             <div class="col-md-4 portfolio-item">
@@ -236,11 +236,42 @@
             </div>
         </div>
         <!-- /.row -->
-
         <hr>
-
         <!-- Pagination -->
         <div class="row text-center">
+
+            <div class="btn-group">
+                <p class="btn btn-default">Sort</p>
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <div class="btn-group">
+                <p class="btn btn-default dropdown-toggle" data-toggle="dropdown" 
+                                                                 aria-expanded="false">
+                    Sort
+                    <span class="caret"></span>
+                </p>
+
+
+                <ul class="dropdown-menu">
+                    <li><a href="#">Positive score</a></li>
+                    <li><a href="#">Negative score</a></li>
+                    <li><a href="#">Date</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
@@ -268,15 +299,6 @@
             </div>
         </div>
         <!-- /.row -->
-
-
-
-
-
-
-
-
-
         <hr>
         <!-- Footer -->
         <footer>
@@ -289,12 +311,6 @@
         </footer>
     </div>
     <!-- /.container -->
-
-
-
-
-
-    
-</div>
 </body>
+
 </html>

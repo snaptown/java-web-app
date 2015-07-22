@@ -1,13 +1,18 @@
-.portfolio-item{
+.navbar{
+	font-size: 14px;
+}
+.portfolio-item{/*
     border-style: solid;
     border-width: 5px;
-    border-color: blue;
-    border-radius: 5px;
+    border-color: rgba(25,25,25,0.3);
+    border-radius: 5px;*/
+    margin-bottom: 15px;
 }
 .portfolio-item p{
 	height: 100px;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis; /*
+    text-align: justify;*/
 }
 .portfolio-item > a{
 	text-decoration: none;
@@ -32,11 +37,18 @@
 	display: inline-block;
 	margin-right: 20px;
 }
+.portfolio-item > div{
+	display: inline-block;
+}
 .positive-vote{
 
 }
 .negative-vote{
 	
+}
+div > .vote{
+	text-decoration: none;
+	margin-right: 15px;
 }
 .vote i{
 	/*border:none;*/
@@ -50,12 +62,20 @@
 	width: 14px;
 	height: 16px;
 	background: url('../img/sprite.png') no-repeat 0 0;
+	background: url('../img/sprite.png') no-repeat 0 -60px;
 }
+/*.positive-vote i:hover{
+	background: url('../img/sprite.png') no-repeat 0 -60px;
+}*/
 .negative-vote i{
 	width: 14px;
 	height: 16px;
 	background: url('../img/sprite.png') no-repeat 100% 0;
+	background: url('../img/sprite.png') no-repeat -30px -60px;
 }	
+/*.negative-vote i:hover{
+	background: url('../img/sprite.png') no-repeat -30px -60px;
+}*/	
 
 #loginform{
 	width: 100%;
@@ -68,9 +88,56 @@
 }
 .image-in-page{
 	float: left;
-	height: 200px;
+	margin-right: 15px;
+	width:55%;
 }
-
+.image-in-page + p{
+	padding-right: 0px;
+	text-align: justify;
+}
+footer{
+	margin-bottom: 0px;
+}
+#logo-img{
+	width: 85px;
+	margin: 2px;
+}
+#hide-map{
+	display: none;
+}
+#map-canvas {
+	display: none;
+	margin-top: 10px;
+	width: auto;
+	height: 500px;
+	background-color: lightblue;
+}
+.info{
+	width: 100%;
+	margin-top: 10px;
+	display: inline-block;
+}
+.info > div{
+	display: inline-block;
+	margin: 0 25px 0 0;
+}
+.info p{
+	display: inline-block;
+	margin: 0 25px 0 25px;
+}
+.info > button{
+	/*display: inline-block;*/
+}
+.created-info{
+	float: right;
+}
+.bold{
+	font-weight: bold;
+}
+/*.btn-group .dropdown-menu li:first-of-type{
+	background-color: rgb(55,70,85);
+}
+*/
 
 
 
@@ -127,12 +194,17 @@
 	clear: both;
 	border: 0;
 	height: 1px;
-	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
-	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),
+		rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),
+		rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),
+		rgba(0,0,0,0.15),rgba(0,0,0,0));
 }
-.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+.panel-login input[type="text"],.panel-login input[type="email"],
+								.panel-login input[type="password"] {
 	height: 45px;
 	border: 1px solid #ddd;
 	font-size: 16px;

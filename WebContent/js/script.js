@@ -26,7 +26,31 @@ function setEvents(){
 	}, false);
 }
 
+function initialize(x,y) {
+	var mapCanvas = document.getElementById('map-canvas');
+	var mapOptions = {
+		center: new google.maps.LatLng(x, y),
+		zoom: 17,
+		mapTypeId: google.maps.MapTypeId.HYBRID
+	};
+	var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+
 $(function() {
+    $('#show-map').click(function(e) {
+		initialize(42.668975,23.266237);
+		$('#show-map').css({'display':'none'});
+		$('#hide-map').css({'display':'inline-block'});
+		$('#map-canvas').css({'display':'block'});
+	    $('html, body').animate({
+	        scrollTop: $("#map-canvas").offset().top
+	    }, 300);
+	});
+    $('#hide-map').click(function(e) {
+		$('#show-map').css({'display':'inline-block'});
+		$('#hide-map').css({'display':'none'});
+		$('#map-canvas').css({'display':'none'});
+	});
 
     $('#login').click(function(e) {
 		$("#login-form").fadeIn(0);
@@ -56,36 +80,16 @@ $(function() {
 		$('#login-form-link').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
-	});
-	function visialisation(element){
-		// element
-	}
+	});	
+
 	$('#loginform').click(function() {
 	//Hide the menus if visible
 		$('#loginform').css({'display':'none'});
 	});
-
 	$('.panel-login').click(function(event){
 	    event.stopPropagation();
 	});
 });
-
-
-
-
-
-
-// $('html').click(function() {
-// //Hide the menus if visible
-// 	// alert('a');
-// 	// $('.row').innerHTML = 'dasdsa';
-// 	// document.getElementsByClassName('panel-login')[0].style.display = 'none';
-// });
-
-// $('.panel-login').click(function(event){
-//     event.stopPropagation();
-// });
-
 
 
 
