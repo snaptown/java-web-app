@@ -134,6 +134,14 @@ footer{
 .bold{
 	font-weight: bold;
 }
+.text-center > .col-lg-12{
+	/*background-color: green;*/
+}
+.text-center > .col-lg-12 > .btn-group{
+	position: absolute;
+	left: 50px;
+	top: 20px;
+}
 /*.btn-group .dropdown-menu li:first-of-type{
 	background-color: rgb(55,70,85);
 }
