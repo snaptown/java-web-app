@@ -1,6 +1,7 @@
 package org.snaptown.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 
 @Entity(name = "photos")
-@NamedQueries({})
+@NamedQueries({
+		@NamedQuery(name = "getPhotosByNewest", query = "select new org.snaptown.models.Photo(p.creator, p.imgPath, p.longitude, p.latitude, p.comment) from photos p order by p.dateCreated desc"),
+		@NamedQuery(name = "getPhotosByMostLiked", query = "select new org.snaptown.models.Photo(p.creator, p.imgPath, p.longitude, p.latitude, p.comment)"
+				+ " from photos p join scores s where s.photo = p.photoId and s.isUpvote = true group by p.photoId order by count(s.scoreId) desc") })
 public class Photo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,12 +26,13 @@ public class Photo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long photo_id;
+	private Long photoId;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private User creator;
 
+	private Date dateCreated;
 	private double longitude;
 	private double latitude;
 	private String comment;
@@ -41,6 +48,11 @@ public class Photo implements Serializable {
 		this.latitude = latitude;
 		this.comment = comment;
 		this.isFixed = false;
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		dateCreated = new Date();
 	}
 
 	public User getCreator() {
@@ -92,7 +104,11 @@ public class Photo implements Serializable {
 	}
 
 	public Long getId() {
-		return photo_id;
+		return photoId;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
 	}
 
 	@Override
@@ -102,6 +118,9 @@ public class Photo implements Serializable {
 			final String creatorName = creator.getUsername();
 			if (creatorName != null && !creatorName.trim().isEmpty())
 				result.append(" creator: ").append(creatorName);
+		}
+		if (dateCreated != null) {
+			result.append(", date-created: ").append(dateCreated.toString());
 		}
 		if (imgPath != null && !imgPath.trim().isEmpty())
 			result.append(", image-path: ").append(imgPath);
@@ -122,8 +141,8 @@ public class Photo implements Serializable {
 			return false;
 		}
 		Photo other = (Photo) obj;
-		if (photo_id != null) {
-			if (!photo_id.equals(other.photo_id)) {
+		if (photoId != null) {
+			if (!photoId.equals(other.photoId)) {
 				return false;
 			}
 		}
@@ -133,6 +152,6 @@ public class Photo implements Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		return prime + ((photo_id == null) ? 0 : photo_id.hashCode());
+		return prime + ((photoId == null) ? 0 : photoId.hashCode());
 	}
 }

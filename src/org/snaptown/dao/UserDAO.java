@@ -33,6 +33,22 @@ public class UserDAO extends AbstractDAO {
 		}
 	}
 
+	public boolean blockUserIfTooManyDownVotes(long userId, int downVotesLimit) {
+		TypedQuery<Integer> query = getEntityManager().createNamedQuery("getUserDownVotes", Integer.class);
+		if (query.getSingleResult() > downVotesLimit) {
+			EntityTransaction addTransaction = beginTransaction();
+			User userToBlock = getUserById(userId);
+			userToBlock.setBlocked(true);
+			commitTransaction(addTransaction);
+			return true;
+		}
+		return false;
+	}
+
+	public User getUserById(final Long userId) {
+		return getEntityManager().find(User.class, userId);
+	}
+
 	private String getHashedPassword(String password) {
 		try {
 			MessageDigest mda = MessageDigest.getInstance("SHA-512");

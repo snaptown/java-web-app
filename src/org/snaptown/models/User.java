@@ -12,13 +12,14 @@ import javax.persistence.NamedQuery;
 @Entity(name = "users")
 @NamedQueries({
 		@NamedQuery(name = "findUserByCredentials", query = "SELECT new org.snaptown.models.User(u.username, u.password, u.isAdmin)"
-				+ " FROM users u WHERE u.username=:username AND u.password=:password") })
+				+ " FROM users u WHERE u.username=:username AND u.password=:password"),
+		@NamedQuery(name = "getUserDownVotes", query = "select count(s.scoreId) from users u join scores s  where s.voter = u.userId group by u.userId") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long user_id;
+	private Long userId;
 
 	private String username;
 	private String password;
@@ -90,8 +91,8 @@ public class User implements Serializable {
 			return false;
 		}
 		User other = (User) obj;
-		if (user_id != null) {
-			if (!user_id.equals(other.user_id)) {
+		if (userId != null) {
+			if (!userId.equals(other.userId)) {
 				return false;
 			}
 		}
@@ -101,6 +102,10 @@ public class User implements Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		return prime + ((user_id == null) ? 0 : user_id.hashCode());
+		return prime + ((userId == null) ? 0 : userId.hashCode());
+	}
+
+	public long getId() {
+		return userId;
 	}
 }

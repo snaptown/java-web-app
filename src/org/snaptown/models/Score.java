@@ -17,14 +17,14 @@ public class Score implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long score_id;
+	private Long scoreId;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private User voter;
 
 	@ManyToOne
-	@JoinColumn(name = "photo_id")
+	@JoinColumn(name = "photoId", referencedColumnName = "photoId")
 	private Photo photo;
 
 	private boolean isUpvote;
@@ -89,8 +89,8 @@ public class Score implements Serializable {
 			return false;
 		}
 		Score other = (Score) obj;
-		if (score_id != null) {
-			if (!score_id.equals(other.score_id)) {
+		if (scoreId != null) {
+			if (!scoreId.equals(other.scoreId)) {
 				return false;
 			}
 		}
@@ -100,6 +100,6 @@ public class Score implements Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		return prime + ((score_id == null) ? 0 : score_id.hashCode());
+		return prime + ((scoreId == null) ? 0 : scoreId.hashCode());
 	}
 }
