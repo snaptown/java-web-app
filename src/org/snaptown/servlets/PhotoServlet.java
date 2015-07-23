@@ -86,7 +86,7 @@ public class PhotoServlet extends HttpServlet {
 	}
 
 	private String savePhotoWithId(HttpServletRequest request, Photo photo) throws IOException, ServletException {
-		final String newImgPath = "C:/Users/Tsvety/Desktop/snaptown/" + photo.getId() + ".jpeg";
+		final String newImgPath = "D:/Java/JavaEE/snaptown/WebContent/images/" + photo.getId() + ".jpeg";
 		InputStream is = request.getPart("PHOTO").getInputStream();
 
 		OutputStream out = new FileOutputStream(newImgPath);
@@ -94,7 +94,7 @@ public class PhotoServlet extends HttpServlet {
 		out.flush();
 		is.close();
 		out.close();
-		return newImgPath;
+		return photo.getId() + ".jpeg";
 	}
 
 	private String parseMultiPartTextPart(HttpServletRequest request, final String partName)

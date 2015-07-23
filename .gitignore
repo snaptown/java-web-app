@@ -3,4 +3,5 @@
 .project
 build
 WebContent/lib
+WebContent/images
 WebContent/css/.sass-cache

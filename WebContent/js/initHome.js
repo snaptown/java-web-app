@@ -28,8 +28,8 @@ $.ajax({
 
                             $img = $("<img class='img-responsive'></img>");
                             $img
-                                .attr("src", photo.imgPath);
-
+                                .attr("src", "/snaptown/images/" + photo.imgPath);
+                            $linkItem.append($img);
                             $upVote = $("<a class='vote positive-vote'></a>")
                                 .append($("<i></i>")
                                         .append($("<span></span>")));
