@@ -23,18 +23,22 @@ public class RegisterServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		final String userName = req.getParameter("username");
+		final String username = req.getParameter("username");
 		final String password = req.getParameter("password");
 
-		if (userName == null || password == null) {
+		if (username == null || password == null) {
 			resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
 		} else {
 			UserDAO userDAO = new UserDAO(EntityManagerProvider.getEntityManager());
-			final User newUser = new User(userName, password, false);
-			userDAO.addUser(newUser);
+			if (userDAO.getUserByUsername(username) == null) {
+				final User newUser = new User(username, password, false);
+				userDAO.addUser(newUser);
 
-			req.getSession().setAttribute("currentUser", userName);
-			resp.setStatus(HttpServletResponse.SC_OK);
+				req.getSession().setAttribute("currentUser", username);
+				resp.setStatus(HttpServletResponse.SC_OK);
+			} else {
+				resp.setStatus(HttpServletResponse.SC_CONFLICT);
+			}
 		}
 	}
 }

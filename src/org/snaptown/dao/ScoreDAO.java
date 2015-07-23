@@ -3,9 +3,7 @@ package org.snaptown.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import org.snaptown.models.Photo;
 import org.snaptown.models.Score;
-import org.snaptown.models.User;
 
 public class ScoreDAO extends AbstractDAO {
 
@@ -13,8 +11,8 @@ public class ScoreDAO extends AbstractDAO {
 		super(em);
 	}
 
-	public void addScoreForPhoto(final Photo photo, final User voter, boolean isUpvote) {
-		Score score = new Score(voter, photo, isUpvote);
+	public void addScoreForPhoto(final Long photoId, final Long userId, boolean isUpvote) {
+		Score score = new Score(userId, photoId, isUpvote);
 		EntityTransaction addTransaction = beginTransaction();
 		getEntityManager().persist(score);
 		commitTransaction(addTransaction);

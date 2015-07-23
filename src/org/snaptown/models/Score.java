@@ -2,13 +2,11 @@ package org.snaptown.models;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 
 @Entity(name = "scores")
@@ -20,13 +18,11 @@ public class Score implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long scoreId;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private User voter;
+	private Long userId;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "photoId", referencedColumnName = "photoId")
-	private Photo photo;
+	private Long photoId;
 
 	private boolean isUpvote;
 
@@ -34,27 +30,27 @@ public class Score implements Serializable {
 
 	}
 
-	public Score(final User voter, final Photo photo, final boolean isUpvote) {
+	public Score(final Long userId, final Long photoId, final boolean isUpvote) {
 		super();
-		this.voter = voter;
-		this.photo = photo;
+		this.userId = userId;
+		this.photoId = photoId;
 		this.isUpvote = isUpvote;
 	}
 
-	public User getVoter() {
-		return voter;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setVoter(User voter) {
-		this.voter = voter;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public Photo getPhoto() {
-		return photo;
+	public Long getPhotoId() {
+		return photoId;
 	}
 
-	public void setPhoto(Photo photo) {
-		this.photo = photo;
+	public void setPhotoId(Long photoId) {
+		this.photoId = photoId;
 	}
 
 	public boolean isUpvote() {
@@ -68,14 +64,11 @@ public class Score implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder(getClass().getSimpleName());
-		if (voter != null) {
-			final String voterName = voter.getUsername();
-			if (voterName != null && !voterName.trim().isEmpty())
-				result.append(" voter: ").append(voterName);
+		if (userId != null) {
+			result.append(" voter: ").append(userId);
 		}
-		if (photo != null) {
-			final Long photoId = photo.getId();
-			result.append(" photo: ").append(photoId == null ? 0 : photoId);
+		if (photoId != null) {
+			result.append(" photo: ").append(photoId);
 		}
 		result.append(", isUpvote: ").append(Boolean.toString(isUpvote));
 		return result.toString();

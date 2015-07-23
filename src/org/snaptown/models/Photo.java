@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
 		@NamedQuery(name = "getPhotosByNewest", query = "select new org.snaptown.models.Photo(p.userId, p.imgPath, p.longitude, p.latitude, p.comment) from photos p order by p.dateCreated desc"),
 		@NamedQuery(name = "getPhotosByMostLiked", query = "select new org.snaptown.models.Photo(p.userId, p.imgPath, p.longitude, p.latitude, p.comment)"
-				+ " from photos p join scores s where s.photo = p.photoId and s.isUpvote = true group by p.photoId order by count(s.scoreId) desc") })
+				+ " from photos p join scores s where s.photoId = p.photoId and s.isUpvote = true group by p.photoId order by count(s.scoreId) desc") })
 public class Photo implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -12,8 +12,8 @@ public class ScoreToJsonConverter implements IConverter<Score, JSONObject> {
 	@Override
 	public JSONObject convert(Score score) throws Exception {
 		JSONObject scoreJsonObj = new JSONObject();
-		scoreJsonObj.put("voter", score.getVoter().getUsername());
-		scoreJsonObj.put("photo", score.getPhoto().getId());
+		scoreJsonObj.put("voter", score.getUserId());
+		scoreJsonObj.put("photo", score.getPhotoId());
 		scoreJsonObj.put("isUpvote", score.isUpvote());
 		return scoreJsonObj;
 	}
