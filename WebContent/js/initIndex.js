@@ -2,10 +2,7 @@ $(document).ready(function() {
 
     $('#login-submit').click(function(e) {
         e.preventDefault();
-        console.log({
-                username: $("#username").val(),
-                password: $("#password").val()
-            });
+
         $.ajax({
             method: "POST",
             url: '/snaptown/login',
@@ -26,8 +23,6 @@ $(document).ready(function() {
                     }
                 }
         });
-        
-
     });
 
 });
