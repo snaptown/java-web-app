@@ -26,19 +26,59 @@ function setEvents(){
 	}, false);
 }
 
-function initialize(x,y) {
-	var mapCanvas = document.getElementById('map-canvas');
-	var mapOptions = {
-		center: new google.maps.LatLng(x, y),
-		zoom: 17,
-		mapTypeId: google.maps.MapTypeId.HYBRID
-	};
-	var map = new google.maps.Map(mapCanvas, mapOptions);
-}
+var geolocation = {
+	lat: 0,
+	lng: 0,
+	initialize: function initialize() {
+		var mapCanvas = document.getElementById('map-canvas');
+		var mapOptions = {
+			center: new google.maps.LatLng(this.lat, this.lng),
+			zoom: 17,
+			mapTypeId: google.maps.MapTypeId.HYBRID
+		};
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+	},
+	address: '',
+	setAddressOnPage: function () {
+			var address = '';
+            var geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(this.lat, this.lng);
+            geocoder.geocode({
+                'latLng': latlng
+            }, function (results, status) 
+            {
+                if (status === google.maps.GeocoderStatus.OK) 
+                {
+                    address_components = results[0].address_components;
+
+                    if (results[0]) 
+                    {  
+                        address = results[0].formatted_address;
+                    }                  
+                    else 
+                    {
+                        address = 'Не е намерен адреса.';
+                    }
+                } 
+                else 
+                {
+                    address = 'Address is not found.(sea)';
+                }
+                document.getElementById('address').innerHTML = address;
+            });
+        }
+};
+
+
+
+
 
 $(function() {
+		geolocation.lat = 42.668975;
+		geolocation.lng = 23.266237;
+		geolocation.setAddressOnPage();
     $('#show-map').click(function(e) {
-		initialize(42.668975,23.266237);
+		geolocation.initialize();
 		$('#show-map').css({'display':'none'});
 		$('#hide-map').css({'display':'inline-block'});
 		$('#map-canvas').css({'display':'block'});
@@ -90,7 +130,6 @@ $(function() {
 	    event.stopPropagation();
 	});
 });
-
 
 
 
