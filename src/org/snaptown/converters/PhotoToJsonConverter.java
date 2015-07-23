@@ -16,6 +16,7 @@ public class PhotoToJsonConverter implements IConverter<Photo, JSONObject> {
 		photoJsonObj.put("longitude", photo.getLongitude());
 		photoJsonObj.put("latitude", photo.getLatitude());
 		photoJsonObj.put("comment", photo.getComment());
+		photoJsonObj.put("imgPath", photo.getImgPath());
 		return photoJsonObj;
 	}
 

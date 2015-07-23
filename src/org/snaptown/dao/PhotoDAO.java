@@ -49,4 +49,10 @@ public class PhotoDAO extends AbstractDAO {
 	public Photo getPhotoById(final Long photoId) {
 		return getEntityManager().find(Photo.class, photoId);
 	}
+
+	public void updateImgPath(Photo photo, String newImgPath) {
+		EntityTransaction addTransaction = beginTransaction();
+		photo.setImgPath(newImgPath);
+		commitTransaction(addTransaction);
+	}
 }

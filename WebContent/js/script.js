@@ -73,7 +73,7 @@ var geolocation = {
 
 
 
-$(function() {/*
+$(function() {
 		geolocation.lat = 42.668975;
 		geolocation.lng = 23.266237;
 		geolocation.setAddressOnPage();
@@ -85,7 +85,7 @@ $(function() {/*
 	    $('html, body').animate({
 	        scrollTop: $("#map-canvas").offset().top
 	    }, 300);
-	});*/
+	});
     $('#hide-map').click(function(e) {
 		$('#show-map').css({'display':'inline-block'});
 		$('#hide-map').css({'display':'none'});

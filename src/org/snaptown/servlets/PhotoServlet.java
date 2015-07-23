@@ -4,6 +4,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.json.simple.JSONObject;
+import org.snaptown.converters.PhotoToJsonConverter;
 import org.snaptown.dao.PhotoDAO;
 import org.snaptown.dao.UserDAO;
 import org.snaptown.models.Photo;
@@ -31,8 +35,27 @@ public class PhotoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String sortType = request.getParameter("sortType");
+
+		PhotoDAO photoDao = new PhotoDAO(EntityManagerProvider.getEntityManager());
+		List<Photo> photos = new LinkedList<>();
+
+		if (sortType != null && sortType.equals("likes")) {
+			photos = photoDao.getPhotosByMostLikes();
+		} else {
+			photos = photoDao.getPhotosByNewest();
+		}
+		if (photos.isEmpty()) {
+			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+		} else {
+			JSONObject photosJson;
+			try {
+				photosJson = new PhotoToJsonConverter().convert(photos);
+				response.getWriter().write(photosJson.toJSONString());
+			} catch (Exception e) {
+				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			}
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,13 +78,13 @@ public class PhotoServlet extends HttpServlet {
 		} else {
 			final Photo newPhoto = new Photo(newPhotoCreator.getId(), "", longitude, latitude, comment);
 			photoDAO.addPhoto(newPhoto);
-			savePhotoWithId(request, newPhoto);
-
+			String newImgPath = savePhotoWithId(request, newPhoto);
+			photoDAO.updateImgPath(newPhoto, newImgPath);
 			response.setStatus(HttpServletResponse.SC_OK);
 		}
 	}
 
-	private void savePhotoWithId(HttpServletRequest request, Photo photo) throws IOException, ServletException {
+	private String savePhotoWithId(HttpServletRequest request, Photo photo) throws IOException, ServletException {
 		final String newImgPath = "C:/Users/Tsvety/Desktop/snaptown/" + photo.getId() + ".jpeg";
 		InputStream is = request.getPart("PHOTO").getInputStream();
 
@@ -70,8 +93,7 @@ public class PhotoServlet extends HttpServlet {
 		out.flush();
 		is.close();
 		out.close();
-
-		photo.setImgPath(newImgPath);
+		return newImgPath;
 	}
 
 	private String parseMultiPartTextPart(HttpServletRequest request, final String partName)
