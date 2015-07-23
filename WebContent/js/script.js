@@ -73,7 +73,7 @@ var geolocation = {
 
 
 
-$(function() {
+$(function() {/*
 		geolocation.lat = 42.668975;
 		geolocation.lng = 23.266237;
 		geolocation.setAddressOnPage();
@@ -85,7 +85,7 @@ $(function() {
 	    $('html, body').animate({
 	        scrollTop: $("#map-canvas").offset().top
 	    }, 300);
-	});
+	});*/
     $('#hide-map').click(function(e) {
 		$('#show-map').css({'display':'inline-block'});
 		$('#hide-map').css({'display':'none'});
@@ -132,6 +132,27 @@ $(function() {
 });
 
 
+
+
+
+$(function() {
+
+    $('#login-form-link').click(function(e) {
+        $("#login-form").delay(100).fadeIn(100);
+        $("#register-form").fadeOut(100);
+        $('#register-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+    $('#register-form-link').click(function(e) {
+        $("#register-form").delay(100).fadeIn(100);
+        $("#login-form").fadeOut(100);
+        $('#login-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+
+});
 
 
 

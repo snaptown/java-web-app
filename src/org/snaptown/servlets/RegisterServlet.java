@@ -25,7 +25,8 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		final String username = req.getParameter("username");
 		final String password = req.getParameter("password");
-
+		System.out.println(username);
+		System.out.println(password);
 		if (username == null || password == null) {
 			resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
 		} else {
