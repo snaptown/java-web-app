@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map-canvas {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        // var geocoder;
+
+        // function initialize() {
+        //     lat = 42.668975;
+        //     lng = 23.266237;
+        //     var geocoder = new google.maps.Geocoder();
+        //     var latlng = new google.maps.LatLng(lat, lng);
+        //     geocoder.geocode({
+        //         'latLng': latlng
+        //     }, function (results, status) 
+        //     {
+        //         var streetNumber,
+        //             streetName,
+        //             neighborhood,
+        //             city,
+        //             country,
+        //             address;
+        //         if (status === google.maps.GeocoderStatus.OK) 
+        //         {
+        //             if (results[0]) 
+        //             {
+        //                 address_components = results[0].address_components;
+
+        //                 streetNumber = address_components[0].short_name;
+        //                 streetName = address_components[1].short_name;
+        //                 city = address_components[2].short_name;
+        //                 country = address_components[4].long_name;
+        //                 address = country + ', ' + city + ', ' + streetName + ', ' + 
+        //                                                                 streetNumber;
+
+        //             }                  
+        //             else if (results[1]) 
+        //             {
+        //                 address_components = results[1].address_components;
+
+        //                 streetName = address_components[0].short_name;
+        //                 city = address_components[1].short_name;
+        //                 country = address_components[4].long_name;
+        //                 address = country + ', ' + city + ', ' + streetName;
+        //             }               
+        //             else if (results[2]) 
+        //             {
+        //                 address_components = results[2].address_components;
+
+        //                 city = address_components[0].short_name;
+        //                 country = address_components[1].long_name;
+        //                 address = country + ', ' + city;
+        //             } 
+        //             else 
+        //             {
+        //                 address = 'Не е намерен адреса.';
+        //             }
+        //         } 
+        //         else 
+        //         {
+        //             alert('Geocoder failed due to: ' + status);
+        //         }
+        //         // alert(address);
+        //     });
+        //     console.log(geocoder);
+        // }
+
+        // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        // function initialize() {
+        //     var mapCanvas = document.getElementById('map-canvas');
+        //     var mapOptions = {
+        //         center: new google.maps.LatLng(44.5403, -78.5463),
+        //         zoom: 8,
+        //         mapTypeId: google.maps.MapTypeId.ROADMAP
+        //     };
+        //     var map = new google.maps.Map(mapCanvas, mapOptions);
+        // }
+        // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        // function codeAddress(address) {
+        //     var result = (new google.maps.Geocoder()).geocode( { 'address': address}, function(results, status) {
+        //       if (status == google.maps.GeocoderStatus.OK) {
+        //         return String(results[0].geometry.location.Ya)+','+
+        //             String(results[0].geometry.location.Za);
+        //     } else {
+        //         return status;
+        //     }
+        // });
+        //     console.log(result);
+        //     return result;
+        // }
+
+
+        function codeAddress(address, callback) 
+        {
+            console.log('test-1');
+            (new google.maps.Geocoder()).geocode({
+                'address' : address
+            }, function(results, status) {
+                console.log('test0');
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log('test1.0');
+                    callback('_edikvosi_');
+                    console.log('test2.0');
+                } else {
+                    console.log('test1.1');
+                    callback(status);
+                    console.log('test2.2');
+                }
+            });
+            console.log('test3');
+        }
+
+        codeAddress("test", function(result) {
+            console.log('test4');
+            console.log(result);
+            console.log('test5');
+        });
+
+        // console.log('-');
+        // console.log('-');
+        // console.log('-');
+        // console.log(1);
+        // console.log('-');
+        // console.log('-');
+        // console.log('-');
+
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

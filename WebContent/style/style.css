@@ -142,10 +142,9 @@ footer{
 	left: 50px;
 	top: 20px;
 }
-/*.btn-group .dropdown-menu li:first-of-type{
-	background-color: rgb(55,70,85);
+h1.page_header{
+	display: none;
 }
-*/
 
 
 
