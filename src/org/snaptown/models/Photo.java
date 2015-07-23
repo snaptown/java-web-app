@@ -8,15 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity(name = "photos")
 @NamedQueries({
-		@NamedQuery(name = "getPhotosByNewest", query = "select new org.snaptown.models.Photo(p.creator, p.imgPath, p.longitude, p.latitude, p.comment) from photos p order by p.dateCreated desc"),
-		@NamedQuery(name = "getPhotosByMostLiked", query = "select new org.snaptown.models.Photo(p.creator, p.imgPath, p.longitude, p.latitude, p.comment)"
+		@NamedQuery(name = "getPhotosByNewest", query = "select new org.snaptown.models.Photo(p.userId, p.imgPath, p.longitude, p.latitude, p.comment) from photos p order by p.dateCreated desc"),
+		@NamedQuery(name = "getPhotosByMostLiked", query = "select new org.snaptown.models.Photo(p.userId, p.imgPath, p.longitude, p.latitude, p.comment)"
 				+ " from photos p join scores s where s.photo = p.photoId and s.isUpvote = true group by p.photoId order by count(s.scoreId) desc") })
 public class Photo implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,21 +29,22 @@ public class Photo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long photoId;
 
-	@ManyToOne
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private User creator;
+	private Long userId;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
+
 	private double longitude;
 	private double latitude;
 	private String comment;
 	private String imgPath;
 	private boolean isFixed;
 
-	public Photo(final User creator, final String imgPath, final double longitude, final double latitude,
+	public Photo(final Long userId, final String imgPath, final double longitude, final double latitude,
 			final String comment) {
 		super();
-		this.creator = creator;
+		this.userId = userId;
 		this.imgPath = imgPath;
 		this.longitude = longitude;
 		this.latitude = latitude;
@@ -55,12 +57,12 @@ public class Photo implements Serializable {
 		dateCreated = new Date();
 	}
 
-	public User getCreator() {
-		return creator;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setCreator(User creator) {
-		this.creator = creator;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getImgPath() {
@@ -114,10 +116,8 @@ public class Photo implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder(getClass().getSimpleName());
-		if (creator != null) {
-			final String creatorName = creator.getUsername();
-			if (creatorName != null && !creatorName.trim().isEmpty())
-				result.append(" creator: ").append(creatorName);
+		if (userId != null) {
+			result.append(" creator: ").append(userId);
 		}
 		if (dateCreated != null) {
 			result.append(", date-created: ").append(dateCreated.toString());

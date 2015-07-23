@@ -2,6 +2,7 @@ package org.snaptown.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +20,11 @@ public class Score implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long scoreId;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private User voter;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "photoId", referencedColumnName = "photoId")
 	private Photo photo;
 

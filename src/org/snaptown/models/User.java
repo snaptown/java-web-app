@@ -2,6 +2,7 @@ package org.snaptown.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,9 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 		@NamedQuery(name = "findUserByCredentials", query = "SELECT new org.snaptown.models.User(u.username, u.password, u.isAdmin)"
 				+ " FROM users u WHERE u.username=:username AND u.password=:password"),
-		@NamedQuery(name = "getUserDownVotes", query = "select count(s.scoreId) from users u join scores s  where s.voter = u.userId group by u.userId") })
+		@NamedQuery(name = "getUserDownVotes", query = "select count(s.scoreId) from users u join scores s  where s.voter = u.userId group by u.userId"),
+		@NamedQuery(name = "findUserByUsername", query = "SELECT new org.snaptown.models.User(u.username, u.password, u.isAdmin)"
+				+ " FROM users u WHERE u.username=:username") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +24,9 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
 
+	@Column(unique = true)
 	private String username;
+
 	private String password;
 	private boolean isBlocked;
 	private boolean isAdmin;
@@ -105,7 +110,7 @@ public class User implements Serializable {
 		return prime + ((userId == null) ? 0 : userId.hashCode());
 	}
 
-	public long getId() {
+	public Long getId() {
 		return userId;
 	}
 }

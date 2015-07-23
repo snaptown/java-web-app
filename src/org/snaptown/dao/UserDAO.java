@@ -15,17 +15,28 @@ public class UserDAO extends AbstractDAO {
 		super(em);
 	}
 
-	public void addUser(User user) {
+	public long addUser(User user) {
 		user.setPassword(getHashedPassword(user.getPassword()));
 
 		EntityTransaction addTransaction = beginTransaction();
 		getEntityManager().persist(user);
 		commitTransaction(addTransaction);
+		return user.getId();
 	}
 
 	public User getUserByCredentials(final String username, final String password) {
 		TypedQuery<User> query = getEntityManager().createNamedQuery("findUserByCredentials", User.class)
-				.setParameter("username", username).setParameter("password", password);
+				.setParameter("username", username).setParameter("password", getHashedPassword(password));
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public User getUserByUsername(final String username) {
+		TypedQuery<User> query = getEntityManager().createNamedQuery("findUserByUsername", User.class)
+				.setParameter("username", username);
 		try {
 			return query.getSingleResult();
 		} catch (NoResultException e) {

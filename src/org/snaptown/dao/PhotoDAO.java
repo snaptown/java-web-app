@@ -15,10 +15,11 @@ public class PhotoDAO extends AbstractDAO {
 		super(em);
 	}
 
-	public void addPhoto(final Photo photo) {
+	public Photo addPhoto(final Photo photo) {
 		EntityTransaction addTransaction = beginTransaction();
 		getEntityManager().persist(photo);
 		commitTransaction(addTransaction);
+		return photo;
 	}
 
 	public List<Photo> getPhotosByNewest() {

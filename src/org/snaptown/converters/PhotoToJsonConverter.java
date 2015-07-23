@@ -12,7 +12,7 @@ public class PhotoToJsonConverter implements IConverter<Photo, JSONObject> {
 	@Override
 	public JSONObject convert(Photo photo) throws Exception {
 		JSONObject photoJsonObj = new JSONObject();
-		photoJsonObj.put("creator", photo.getCreator().getUsername());
+		photoJsonObj.put("creator", photo.getUserId());
 		photoJsonObj.put("longitude", photo.getLongitude());
 		photoJsonObj.put("latitude", photo.getLatitude());
 		photoJsonObj.put("comment", photo.getComment());

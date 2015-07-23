@@ -23,19 +23,25 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		final String username = req.getParameter("userName");
+		final String username = req.getParameter("username");
 		final String password = req.getParameter("password");
+		System.out.println(username);
+		System.out.println(password);
 
 		UserDAO userDAO = new UserDAO(EntityManagerProvider.getEntityManager());
 		final User requestedUser = userDAO.getUserByCredentials(username, password);
+
 		if (requestedUser == null) {
-			doGet(req, resp);
+			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		} else {
+
 			req.getSession().setAttribute("currentUser", username);
 			if (requestedUser.isAdmin()) {
-				resp.sendRedirect("/admin/photos");
+				// see only top 5 or something.... and be able to set fixed
+				// state of photos
+				resp.setStatus(HttpServletResponse.SC_ACCEPTED);
 			} else {
-				resp.sendRedirect("/photos");
+				resp.setStatus(HttpServletResponse.SC_ACCEPTED);
 			}
 		}
 	}

@@ -27,14 +27,14 @@ public class RegisterServlet extends HttpServlet {
 		final String password = req.getParameter("password");
 
 		if (userName == null || password == null) {
-			doGet(req, resp);
+			resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
 		} else {
 			UserDAO userDAO = new UserDAO(EntityManagerProvider.getEntityManager());
 			final User newUser = new User(userName, password, false);
 			userDAO.addUser(newUser);
 
 			req.getSession().setAttribute("currentUser", userName);
-			resp.sendRedirect("/photos");
+			resp.setStatus(HttpServletResponse.SC_OK);
 		}
 	}
 }
