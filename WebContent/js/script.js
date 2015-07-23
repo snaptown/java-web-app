@@ -69,23 +69,32 @@ var geolocation = {
         }
 };
 
+function closeLoginForm(){
+	document.getElementById('loginform').style.display = 'none';
+}
 
+
+// function loadMap(){
+// 	geolocation.initialize();
+// 	$('#map-canvas').css({'display':'block'});
+// 	$('html, body').animate({
+// 		scrollTop: $("#map-canvas").offset().top
+// 	}, 300);
+
+// }
+
+function setAddressOnPage(){
+	geolocation.lat = 42.668975;
+	geolocation.lng = 23.266237;
+	geolocation.setAddressOnPage();
+	// // loadMap();
+	// $('#map-canvas').css({'display':'block'});
+	// geolocation.initialize();
+}
 
 
 
 $(function() {
-		geolocation.lat = 42.668975;
-		geolocation.lng = 23.266237;
-		geolocation.setAddressOnPage();
-    $('#show-map').click(function(e) {
-		geolocation.initialize();
-		$('#show-map').css({'display':'none'});
-		$('#hide-map').css({'display':'inline-block'});
-		$('#map-canvas').css({'display':'block'});
-	    $('html, body').animate({
-	        scrollTop: $("#map-canvas").offset().top
-	    }, 300);
-	});
     $('#hide-map').click(function(e) {
 		$('#show-map').css({'display':'inline-block'});
 		$('#hide-map').css({'display':'none'});

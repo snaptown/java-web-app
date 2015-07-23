@@ -51,6 +51,7 @@ public class PhotoServlet extends HttpServlet {
 			JSONObject photosJson;
 			try {
 				photosJson = new PhotoToJsonConverter().convert(photos);
+				System.out.println(photosJson.toJSONString());
 				response.getWriter().write(photosJson.toJSONString());
 			} catch (Exception e) {
 				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

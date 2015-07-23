@@ -102,16 +102,14 @@ footer{
 	width: 85px;
 	margin: 2px;
 }
-#hide-map{
-	display: none;
-}
+
 #map-canvas {
-	display: none;
 	margin-top: 10px;
 	width: auto;
 	height: 500px;
 	background-color: lightblue;
 }
+
 .info{
 	width: 100%;
 	margin-top: 10px;
