@@ -7,6 +7,7 @@
     <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/google.js"></script>
+    <script type="text/javascript" src="js/initPage.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     <script type="text/javascript">
         document.addEventListener("load", setAddressOnPage());
@@ -32,52 +33,16 @@
 
     <div class="container">
         <h1 class="page-header" style="margin-top: 75px;"> </h1>
-        <div class="row">
-            <img class="img-responsive image-in-page" src="img/2.jpg" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea delectus molestiae maiores quasi perferendis excepturi suscipit ex quos ducimus aspernatur. A similique magni aspernatur inventore accusamus, doloribus odit. Delectus culpa unde cupiditate perspiciatis soluta nobis nemo nulla enim doloribus voluptates nesciunt, illo esse nihil voluptatum iste fuga modi voluptas voluptate dolorum maiores quam dolorem. Incidunt, sunt reiciendis consequatur nisi aspernatur aperiam delectus ipsum dolorum veniam, quasi quidem possimus optio ab atque modi velit ad eum deserunt consequuntur perferendis veritatis debitis nobis dolores? Dicta cumque, eaque doloribus voluptatem exercitationem illum nam ipsum, quidem tempora fuga nesciunt dolore officiis veritatis quas ullam quia, commodi, qui expedita! Quaerat ab iusto dignissimos at quas expedita corporis dicta iste vero, architecto corrupti facere, repudiandae aut, necessitatibus cupiditate unde deserunt. Animi quis aperiam voluptas, accusamus quia enim nesciunt facere facilis vitae dolorum ea temporibus non dolore labore, perspiciatis quisquam nemo omnis architecto, amet consectetur at possimus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus libero eos, itaque excepturi vitae eius dolorem. Enim quos sit, quo libero tempora. Alias quod laudantium aperiam doloremque aliquam, error! Asperiores delectus nostrum, placeat, corporis necessitatibus voluptatem accusamus officia facilis possimus explicabo omnis repudiandae amet commodi facere cupiditate iure deserunt, aliquam tempora! Libero voluptatibus porro necessitatibus ab rerum error nisi suscipit at repellat. Temporibus mollitia omnis labore, dolorum unde dolor consectetur harum aliquam atque doloribus. Quae natus esse aliquam atque illum laborum saepe voluptas adipisci, impedit totam nihil. Laboriosam et praesentium soluta, ducimus, ut molestiae ab aliquid architecto quaerat, similique quo.</p>
-        </div>
-        <div class="info">
-          <a href="#" class="vote positive-vote">
-            <i></i>
-            <span>122</span>
-          </a>
-          <a href="#" class="vote negative-vote">
-            <i></i>
-            <span>332</span>
-          </a>
-
-          <p id="address">address</p>
-          
-          <div class="created-info">
-            <p>Created by <span class="bold">{username}</span></p>
-            <p>date: <span class="bold">22/7/2015</span></p>
-          </div>
-        </div>
-         <script>
-          function initialize() {
-            var mapCanvas = document.getElementById('map-canvas');
-            var mapOptions = {
-              center: new google.maps.LatLng(geolocation.lat,geolocation.lng),
-              zoom: 17,
-              mapTypeId: google.maps.MapTypeId.HYBRID
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-          }
-          google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-
-        <div id="map-canvas"></div>
-
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Team III &copy; Website 2015</p>
-                </div>
-            </div>
-        </footer>
+        <div class="row" id="photoContainer">
     </div>
+    <hr>
+      <footer>
+          <div class="row">
+              <div class="col-lg-12">
+                  <p>Team III &copy; Website 2015</p>
+              </div>
+          </div>
+      </footer>
 
 </body>
 </html>

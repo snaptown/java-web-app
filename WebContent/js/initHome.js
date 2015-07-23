@@ -19,8 +19,8 @@ $.ajax({
                             }
                             i+=1;
                             $divItem = $("<div class='col-md-4 portfolio-item'></div>");
-                            $linkItem = $("<a></a>")
-                                .attr("href", "page.html" );
+                            $linkItem = $("<a class='photoLink' photoId='"+ photo.id +"'></a>")
+                                .attr("href", "#" );
 
                             $imgDiv = $("<div class='img-container'> </div>");
                             $linkItem
@@ -48,6 +48,11 @@ $.ajax({
 
                         });
                         $containerDiv.append($currentRow);
+
+                        $(".photoLink").click(function(){
+                            window.location.replace('/snaptown/page.html?photoId=' + 
+                                $(this).attr("photoId"));
+                        });
                 }
             }
         });
